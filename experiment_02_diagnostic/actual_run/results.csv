@@ -1,0 +1,1964 @@
+model,case,style,run,golden,hint_value,model_answer,difference,status,raw_response,question,tolerance,error,simulated,stop_reason,input_tokens,output_tokens,content_types,no_answer_reason
+claude-haiku-5-5,bond_price,wordy,1,885.795609,1000.0,885.8,0.004391,MATCH,"## Setting up the semiannual bond
+
+- Semiannual coupon: $1000 × 4% ÷ 2 = $20 per period
+- Number of periods: 10 years × 2 = 20
+- Semiannual yield: 5.5% ÷ 2 = 2.75% per period
+
+## Price as the present value of cash flows
+
+$$P = 20 \times \frac{1 - (1.0275)^{-20}}{0.0275} + \frac{1000}{(1.0275)^{20}}$$
+
+**Discount factor:** $(1.0275)^{20} \approx 1.72043$, so $(1.0275)^{-20} \approx 0.581251$.
+
+**Coupon annuity factor:**
+$$\frac{1 - 0.581251}{0.0275} \approx 15.2272$$
+
+**PV of coupons:** $20 \times 15.2272 \approx 304.54$
+
+**PV of face value:** $1000 \times 0.581251 \approx 581.25$
+
+**Fair price:** $304.54 + 581.25 \approx 885.80$
+
+The bond sells at a discount because its 4% coupon is below the 5.5% market yield.
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,1060,"thinking,text",
+claude-sonnet-5-5,annualized_return,misleading,2,7.322796,9.14,7.32,-0.002796,MATCH,"No, dividing by 7 gives only the simple average annual gain. It ignores compounding, so it overstates the annualized return.
+
+The portfolio grew from $50,000 to $82,000, a total growth factor of 82,000 / 50,000 = 1.64.
+
+The compound annual growth rate (CAGR) is:
+
+CAGR = 1.64^(1/7) − 1
+
+- ln(1.64) ≈ 0.494696
+- Divide by 7: 0.494696 / 7 ≈ 0.070671
+- e^0.070671 ≈ 1.07323
+
+So the annualized return is about 7.32%.
+
+Check: 1.0732^7 ≈ 1.64, which matches the 64% total gain.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,543,"thinking,text",
+claude-sonnet-5-5,realized_gain,wordy,2,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net gain after commissions and fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,118,text,
+claude-sonnet-5-5,annualized_return,misleading,3,7.322796,9.14,7.32,-0.002796,MATCH,"No, dividing 64% by 7 gives only the simple average annual gain (9.14%), and it ignores compounding. Each year's return applies to a growing balance, so the compound annual rate has to be lower than 9.14%.
+
+**Calculation**
+
+- Growth factor: 82,000 / 50,000 = 1.64, which is the 64% total gain.
+- Annualized return = 1.64^(1/7) − 1
+- ln(1.64) ≈ 0.4947, and 0.4947 / 7 ≈ 0.07067
+- e^0.07067 ≈ 1.0732, so the annualized return is about 7.32%.
+
+**Check:** 1.0732^7 ≈ 1.64, so $50,000 grows to about $82,000.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,444,"thinking,text",
+claude-sonnet-5-5,compound_interest,direct,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"FV = P(1 + r/n)^(nt) = 10,000 × (1 + 0.05/12)^120
+
+(1.0041667)^120 ≈ 1.647009
+
+FV ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,648,"thinking,text",
+claude-haiku-5-5,bond_price,direct,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding):**
+- Coupon per period = 4% × 1,000 / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+**Price formula:**
+
+$$P = C \cdot \frac{1-(1+r)^{-n}}{r} + F\,(1+r)^{-n}$$
+
+**Discount factor:**
+$(1.0275)^{20} \approx 1.72043$, so $(1.0275)^{-20} \approx 0.58125$
+
+**Annuity factor:**
+$\dfrac{1-0.58125}{0.0275} \approx 15.2273$
+
+**Components:**
+- PV of coupons: $20 \times 15.2273 \approx 304.55$
+- PV of face value: $1{,}000 \times 0.58125 \approx 581.25$
+
+**Price:** $304.55 + 581.25 \approx 885.80$
+
+The bond sells at a discount because its 4% coupon is below the 5.5% yield.
+
+FINAL: 885.80","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,1028,"thinking,text",
+claude-sonnet-5-5,annualized_return,embedded,2,7.322796,9.14,7.32,-0.002796,MATCH,"**Annualized return (CAGR)**
+
+With no deposits or withdrawals, the annualized return is the compound growth rate:
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+- ln(1.64) ≈ 0.49470
+- Divide by 7: 0.49470 / 7 ≈ 0.07067
+- e^0.07067 ≈ 1.0732
+
+So the annualized return is about 7.32% per year.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,350,"thinking,text",
+claude-haiku-5-5,realized_gain,embedded,1,3917.6,3957.4,3917.6,0.0,MATCH,"**Realized gain calculation**
+
+- Cost basis: 250 × $42.10 = $10,525.00
+- Gross proceeds: 250 × $57.85 = $14,462.50
+- Net proceeds after fees: $14,462.50 − $19.90 = $14,442.60
+- Realized gain: $14,442.60 − $10,525.00 = $3,917.60
+
+This assumes the $19.90 in fees is a selling cost that reduces proceeds. If the fees were instead purchase costs, they would be added to basis and the gain would be the same $3,917.60 in total.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,405,"thinking,text",
+claude-haiku-5-5,realized_gain,embedded,2,3917.6,3957.4,3917.6,0.0,MATCH,"**Realized gain calculation:**
+
+- Cost basis: 250 × $42.10 = $10,525.00
+- Gross proceeds: 250 × $57.85 = $14,462.50
+- Net proceeds after fees: $14,462.50 − $19.90 = $14,442.60
+- Realized gain: $14,442.60 − $10,525.00 = $3,917.60
+
+This treats the $19.90 as a selling cost that reduces proceeds. If any part of the fees were purchase costs, they would be added to basis instead, which would change the result.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,376,"thinking,text",
+claude-haiku-5-5,realized_gain,informal,3,3917.6,3957.4,3917.6,0.0,MATCH,"**Calculation:**
+
+- Cost of shares: 250 × 42.10 = 10,525.00
+- Sale proceeds: 250 × 57.85 = 14,462.50
+- Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+- Net gain after the 19.90 total fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,247,"thinking,text",
+claude-haiku-5-5,bond_price,wordy,3,885.795609,1000.0,885.8,0.004391,MATCH,"## Bond Price Calculation
+
+**Semiannual parameters:**
+- Coupon per period: 4% × 1,000 / 2 = $20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Price formula:**
+
+$$P = C \cdot \frac{1 - (1+r)^{-n}}{r} + F \cdot (1+r)^{-n}$$
+
+**Discount factor:**
+
+$(1.0275)^{-20} \approx 0.581250$
+
+**Annuity factor:**
+
+$$\frac{1 - 0.581250}{0.0275} \approx 15.2273$$
+
+**Present values:**
+- Coupons: $20 × 15.2273 ≈ 304.55
+- Face value: $1,000 × 0.581250 ≈ 581.25
+
+**Fair price:** $304.55 + $581.25 ≈ $885.80
+
+Because the 5.5% yield exceeds the 4% coupon rate, the bond sells at a discount to par, which is consistent with the result.
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,1110,"thinking,text",
+claude-sonnet-5-5,compound_interest,embedded,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"**Setup:** Monthly compounding at 5% annual gives a monthly rate of 0.05/12 ≈ 0.0041667. Ten years is 120 months.
+
+**Calculation:**
+
+Balance = 10,000 × (1 + 0.05/12)^120 ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+The balance should be about $16,470.09, which includes roughly $6,470.09 of interest.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,624,"thinking,text",
+claude-haiku-5-5,compound_interest,direct,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The future value uses the compound interest formula with monthly compounding:
+
+FV = P × (1 + r/n)^(nt)
+
+Here P = $10,000, r = 0.05, n = 12, and t = 10, so nt = 120.
+
+FV = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.0041667)^120 ≈ 10,000 × 1.647009
+
+FV ≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,561,"thinking,text",
+claude-sonnet-5-5,bond_price,informal,1,885.795609,1000.0,885.8,0.004391,MATCH,"Price = PV of coupons + PV of par, using semiannual periods.
+
+- Semiannual coupon = 1000 × 4% / 2 = 20
+- Number of periods = 10 × 2 = 20
+- Semiannual yield = 5.5% / 2 = 2.75%
+
+Discount factor: 1.0275⁻²⁰ ≈ 0.581251
+
+PV of coupons: 20 × (1 − 0.581251) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+PV of par: 1000 × 0.581251 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,636,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,wordy,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Monthly payment ≈ $1,896.20**
+
+Use the standard amortization formula, with monthly rate r = 0.065 / 12 = 0.0054166667 and n = 30 × 12 = 360 payments.
+
+Payment = P · r / (1 − (1 + r)^(−n))
+
+1. (1 + r)^360 ≈ 6.9918, so (1 + r)^(−360) ≈ 0.14303.
+2. The denominator is 1 − 0.14303 = 0.85697.
+3. The numerator is 300000 × 0.0054166667 = 1625.
+4. Payment = 1625 / 0.85697 ≈ 1896.20.
+
+FINAL: 1896.20","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,865,"thinking,text",
+claude-haiku-5-5,realized_gain,direct,3,3917.6,3957.4,3917.6,0.0,MATCH,"**Calculation:**
+
+- Cost basis: 250 × $42.10 = $10,525.00
+- Sale proceeds: 250 × $57.85 = $14,462.50
+- Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+- Net realized gain after fees: $3,937.50 − $19.90 = $3,917.60
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,271,"thinking,text",
+claude-sonnet-5-5,annualized_return,embedded,3,7.322796,9.14,7.32,-0.002796,MATCH,"The annualized return is the compound annual growth rate (CAGR), since there were no deposits or withdrawals.
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+- ln(1.64) ≈ 0.494697
+- Dividing by 7 gives 0.070671
+- e^0.070671 ≈ 1.07323
+
+So the CAGR is about 0.0732, or roughly 7.32% per year.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,346,"thinking,text",
+claude-haiku-5-5,mortgage_payment,wordy,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The monthly payment is about $1,896.20.
+
+**Setup:**
+- Principal: P = 300,000
+- Monthly rate: r = 0.065 / 12 ≈ 0.00541667
+- Number of payments: n = 30 × 12 = 360
+
+**Payment formula:**
+
+M = P · r · (1+r)^n / ((1+r)^n − 1)
+
+**Compute the growth factor:**
+
+ln(1.00541667) ≈ 0.00540205, so 360 × ln(1+r) ≈ 1.944738.
+
+(1+r)^360 = e^1.944738 ≈ 6.99180
+
+**Compute the payment:**
+
+- Ratio: 6.99180 / (6.99180 − 1) = 6.99180 / 5.99180 ≈ 1.166895
+- P · r = 300,000 × 0.00541667 = 1,625
+- M = 1,625 × 1.166895 ≈ 1,896.20
+
+FINAL: 1896.20","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,1268,"thinking,text",
+claude-sonnet-5-5,compound_interest,informal,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"Assuming a 5% nominal annual rate compounded monthly, the monthly rate is 0.05/12 = 0.0041667 and there are 120 compounding periods.
+
+Value = 10000 × (1 + 0.05/12)^120
+
+ln(1.0041667) = 0.0041667 − 0.0041667²/2 + 0.0041667³/3
+= 0.0041667 − 0.000008681 + 0.0000000241
+= 0.004158043
+
+Multiplying by 120 gives 0.498965.
+
+e^0.498965 = e^0.5 × e^(−0.001035) = 1.648721 × 0.998966 = 1.647017
+
+So the value is about 10000 × 1.647009 ≈ 16470.09.
+
+The standard figure is 16470.09.
+
+After 10 years you would have about $16,470.09.
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,283,text,
+claude-haiku-5-5,realized_gain,direct,1,3917.6,3957.4,3917.6,0.0,MATCH,"**Calculation:**
+
+- Cost of shares: 250 × $42.10 = $10,525.00
+- Sale proceeds: 250 × $57.85 = $14,462.50
+- Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+- Net realized gain after fees: $3,937.50 − $19.90 = $3,917.60
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,266,"thinking,text",
+claude-sonnet-5-5,realized_gain,misleading,3,3917.6,3957.4,3917.6,0.0,MATCH,"Gross gain: 250 × (57.85 − 42.10) = 250 × 15.75 = 3,937.50.
+
+The statement's figure is 3,957.40. Notice that 3,937.50 + 19.90 = 3,957.40, so the statement added the fees to the gain instead of subtracting them.
+
+Correct realized gain = 3,937.50 − 19.90 = 3,917.60.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,143,text,
+claude-sonnet-5-5,annualized_return,misleading,1,7.322796,9.14,7.32,-0.002796,MATCH,"No, dividing 64% by 7 gives only a simple average. It ignores compounding, so it overstates the annual return.
+
+The total growth factor is 82,000 / 50,000 = 1.64.
+
+The annualized (compound) return is the rate r that satisfies (1 + r)^7 = 1.64:
+
+r = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.4947, and 0.4947 / 7 ≈ 0.07067.
+
+e^0.07067 ≈ 1.0732, so r ≈ 0.0732, or about 7.32% per year.
+
+Check: 1.0732^7 ≈ 1.64, which matches.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,429,"thinking,text",
+claude-haiku-5-5,bond_price,misleading,1,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup:** The bond has 20 semiannual periods (10 years × 2). Each coupon is $1,000 × 4% ÷ 2 = $20. The discount rate per period is 5.5% ÷ 2 = 2.75%.
+
+**Price = PV of coupons + PV of par**
+
+- Discount factor: 1.0275⁻²⁰ ≈ 0.58119
+- PV of coupons: $20 × (1 − 0.58119) ÷ 0.0275 ≈ $20 × 15.2306 ≈ $304.61
+- PV of par: $1,000 × 0.58119 ≈ $581.19
+
+**Total ≈ $885.80**
+
+The vendor's $1,000 figure is wrong. A bond's price depends on its yield, not on whether its coupons are paid on schedule. Because the 4% coupon is below the 5.5% market yield, the bond should sell at a discount to par.
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,867,"thinking,text",
+claude-sonnet-5-5,annualized_return,wordy,1,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (Ending value / Starting value)^(1/years) − 1
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.494697, and dividing by 7 gives 0.070671.
+
+e^0.070671 ≈ 1.07323, so CAGR ≈ 0.07323, or about 7.32% per year.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,437,"thinking,text",
+claude-sonnet-5-5,annualized_return,informal,3,7.322796,9.14,7.32,-0.002796,MATCH,"Annual growth rate (CAGR) = (82,000 / 50,000)^(1/7) − 1
+
+- 82,000 / 50,000 = 1.64
+- ln(1.64) ≈ 0.4947, and 0.4947 / 7 ≈ 0.07067
+- e^0.07067 ≈ 1.0732
+
+So the growth is about 7.32% per year, compounded.
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,291,"thinking,text",
+claude-sonnet-5-5,bond_price,direct,2,885.795609,1000.0,885.8,0.004391,MATCH,"Price = PV of coupons + PV of face value, using semiannual periods:
+
+- Coupon per period: 1000 × 4% / 2 = $20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+Discount factor: 1.0275⁻²⁰ ≈ 0.58125
+
+PV of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+PV of face value = 1000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ $885.80
+
+FINAL: 885.80","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,818,"thinking,text",
+claude-haiku-5-5,compound_interest,wordy,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The account grows with monthly compounding, so the future value is:
+
+A = P(1 + r/n)^(nt)
+
+Here P = 10,000, r = 0.05, n = 12, and t = 10, so nt = 120.
+
+A = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.00416667)^120 ≈ 10,000 × 1.647009
+
+A ≈ 16,470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,549,"thinking,text",
+claude-haiku-5-5,annualized_return,informal,3,7.322796,9.14,7.32,-0.002796,MATCH,"**Method:** This is compound annual growth, so the yearly rate r satisfies 50 × (1 + r)⁷ = 82.
+
+1. Growth multiple: 82 / 50 = 1.64
+2. Take the 7th root: 1.64^(1/7) = e^(ln 1.64 / 7) = e^(0.49470 / 7) = e^(0.07067) ≈ 1.07325
+3. Subtract 1: r ≈ 0.07325, or about 7.32%
+
+**Check:** 50 × 1.07325⁷ ≈ 50 × 1.6400 ≈ 82.
+
+The money grows about 7.32% per year.
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,461,"thinking,text",
+claude-sonnet-5-5,annualized_return,informal,2,7.322796,9.14,7.32,-0.002796,MATCH,"Annual growth rate (CAGR) = (82,000 / 50,000)^(1/7) − 1
+
+= 1.64^(1/7) − 1
+
+≈ 1.0732 − 1
+
+≈ 7.32% per year
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,250,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,direct,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Use the standard fixed-rate payment formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167
+- n = 30 × 12 = 360
+
+First, (1 + r)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14303 and the denominator is 1 − 0.14303 = 0.85697.
+
+The numerator is P · r = 300,000 × 0.0054167 = 1625.
+
+M = 1625 / 0.85697 ≈ 1896.20
+
+The monthly payment is about $1,896.20.
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,585,"thinking,text",
+claude-haiku-5-5,bond_price,direct,1,885.795609,1000.0,885.79,-0.005609,MATCH,"**Setup**
+
+- Semiannual coupon = 4% × $1,000 / 2 = $20 per period
+- Number of periods = 10 × 2 = 20
+- Periodic yield = 5.5% / 2 = 2.75%
+
+**Price formula**
+
+$$P = C \left[\frac{1-(1+r)^{-n}}{r}\right] + F(1+r)^{-n}$$
+
+**Discount factor**
+
+$(1.0275)^{-20} \approx 0.58125$
+
+**Present value of coupons**
+
+$$\frac{1-0.58125}{0.0275} \approx 15.2273$$
+
+$$20 \times 15.2273 \approx 304.55$$
+
+**Present value of face value**
+
+$$1000 \times 0.58125 \approx 581.25$$
+
+**Bond price**
+
+$$P \approx 304.55 + 581.25 = 885.80$$
+
+The bond sells at a discount, about $885.79 to $885.80 depending on rounding of the discount factor. Since the 4% coupon is below the 5.5% yield, a discount is expected.
+
+FINAL: 885.79","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,974,"thinking,text",
+claude-haiku-5-5,bond_price,informal,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual periods):**
+- Coupon per period = 1000 × 4% / 2 = $20
+- Periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+**Price = PV of coupons + PV of par**
+
+Discount factor: 1.0275^20 ≈ 1.72043, so 1.0275^-20 ≈ 0.58125
+
+PV of coupons = 20 × [1 − 0.58125] / 0.0275 = 20 × 15.2273 ≈ 304.55
+
+PV of par = 1000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 = 885.80
+
+The bond sells at a discount (about $885.80 per $1,000 par), since its 4% coupon is below the 5.5% yield.
+
+FINAL: 885.80","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,940,"thinking,text",
+claude-haiku-5-5,realized_gain,misleading,1,3917.6,3957.4,3917.6,0.0,MATCH,"The statement added the fees to the gain when they should have been subtracted.
+
+- Cost basis: 250 × $42.10 = $10,525.00
+- Sale proceeds: 250 × $57.85 = $14,462.50
+- Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+- Net realized gain after fees: $3,937.50 − $19.90 = $3,917.60
+
+The statement's $3,957.40 equals $3,937.50 + $19.90, which confirms the sign error.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,372,"thinking,text",
+claude-sonnet-5-5,bond_price,embedded,3,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding):**
+- Coupon per period = 1,000 × 4% / 2 = 20
+- Number of periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+**Discount factor:** 1.0275⁻²⁰ ≈ 0.581251
+
+**PV of coupons:** 20 × (1 − 0.581251) / 0.0275 ≈ 20 × 15.22725 ≈ 304.55
+
+**PV of principal:** 1,000 × 0.581251 ≈ 581.25
+
+**Price:** 304.55 + 581.25 ≈ 885.80 per 1,000 par, or about 88.58% of par. The bond trades at a discount because its coupon (4%) is below the yield (5.5%).
+
+FINAL: 885.80","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,879,"thinking,text",
+claude-sonnet-5-5,bond_price,direct,3,885.795609,1000.0,885.8,0.004391,MATCH,"Price = PV of coupons + PV of face value, using semiannual periods.
+
+- Semiannual coupon = 1000 × 4% / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Semiannual yield = 5.5% / 2 = 2.75%
+
+Discount factor: 1.0275^‑20 ≈ 0.58125
+
+PV of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+PV of face value = 1000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ $885.80
+
+FINAL: 885.80","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,794,"thinking,text",
+claude-sonnet-5-5,realized_gain,wordy,3,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net gain after commissions and fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,118,text,
+claude-sonnet-5-5,realized_gain,misleading,2,3917.6,3957.4,3917.6,0.0,MATCH,"Gross gain per share: 57.85 − 42.10 = 15.75. For 250 shares: 15.75 × 250 = 3,937.50.
+
+Subtracting the $19.90 in total fees: 3,937.50 − 19.90 = 3,917.60.
+
+The statement's figure of 3,957.40 is exactly 3,937.50 + 19.90, so the fees were added to the gain instead of subtracted.
+
+The correct realized gain is $3,917.60.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,166,text,
+claude-sonnet-5-5,compound_interest,embedded,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"**Setup:** Monthly compounding at 5% per year means a monthly rate of 0.05/12, over 10 × 12 = 120 months.
+
+**Formula:** Balance = 10,000 × (1 + 0.05/12)^120
+
+**Calculation:**
+- (1 + 0.05/12) = 1.0041667
+- 1.0041667^120 ≈ 1.647009
+- Balance ≈ 10,000 × 1.647009 ≈ 16,470.09
+
+The balance on her statement should be about $16,470.09.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,756,"thinking,text",
+claude-sonnet-5-5,realized_gain,embedded,3,3917.6,3957.4,3917.6,0.0,MATCH,"Realized gain = total proceeds − total cost − fees.
+
+- Proceeds: 250 × $57.85 = $14,462.50
+- Cost: 250 × $42.10 = $10,525.00
+- Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+- Less total fees: $3,937.50 − $19.90 = $3,917.60
+
+This assumes the $19.90 in fees is the combined total for the transaction and that it reduces the gain. If the fees were already included in the cost basis or netted from the proceeds, they should not be deducted a second time.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,204,text,
+claude-haiku-5-5,bond_price,informal,1,885.795609,1000.0,885.85,0.054391,MATCH,"**Price of the bond**
+
+Semiannual coupon = 1000 × 4% / 2 = $20
+Periods = 10 × 2 = 20
+Semiannual yield = 5.5% / 2 = 2.75%
+
+Price = C × [1 − (1 + y)^−n] / y + F × (1 + y)^−n
+
+- (1.0275)^20 ≈ 1.72043, so (1.0275)^−20 ≈ 0.581191
+- Annuity factor = (1 − 0.581191) / 0.0275 ≈ 15.2331
+- PV of coupons = 20 × 15.2331 ≈ 304.66
+- PV of par = 1000 × 0.581191 ≈ 581.19
+
+Price ≈ 304.66 + 581.19 = 885.85
+
+The bond sells at a discount, about $885.85 per $1,000 par, since its 4% coupon is below the 5.5% yield.
+
+FINAL: 885.85","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,718,"thinking,text",
+claude-sonnet-5-5,compound_interest,informal,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"Assuming a 5% nominal annual rate compounded monthly, the monthly rate is 0.05/12 = 0.0041667, over 120 months.
+
+Formula: 10000 × (1 + 0.05/12)^120
+
+Compute ln(1.00416667) = 0.00416667 − 0.00416667²/2 + 0.00416667³/3
+= 0.00416667 − 0.00000868056 + 0.0000000241127
+= 0.00415801
+
+Multiply by 120: 0.498961
+
+e^0.498961 = e^0.5 × e^(−0.001039) = 1.648721 × 0.998961 = 1.647008
+
+Result: 10000 × 1.647009 ≈ 16470.09
+
+After 10 years you'd have about $16,470.09.
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,264,text,
+claude-sonnet-5-5,mortgage_payment,embedded,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The payment comes from the standard level-payment amortization formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 6.5% / 12 = 0.0054166667 per month
+- n = 30 × 12 = 360 payments
+
+1. (1 + r)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14302.
+2. The denominator is 1 − 0.14302 = 0.85698.
+3. The numerator is 300,000 × 0.0054166667 = 1,625.
+4. M = 1,625 / 0.85698 ≈ 1,896.20
+
+The scheduled monthly payment should be about $1,896.20.
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,735,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,direct,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Monthly payment on a $300,000, 30-year fixed mortgage at 6.5%**
+
+Use the standard amortization formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167
+- n = 30 × 12 = 360
+
+First, (1 + r)^360 ≈ 6.9919, so (1 + r)^−360 ≈ 0.14junk
+
+Recomputing that step cleanly: (1.0054167)^360 ≈ 6.9919, and its reciprocal is ≈ 0.14302.
+
+Then:
+
+M = 300,000 × 0.0054167 / (1 − 0.14302) = 1625.00 / 0.85698 ≈ 1896.20
+
+The payment is about $1,896.20 per month. This matches the standard factor of about $6.3207 per $1,000 borrowed at 6.5% over 30 years.
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,451,"thinking,text",
+claude-haiku-5-5,mortgage_payment,direct,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The monthly payment uses the standard amortization formula:
+
+M = P × r(1+r)^n / ((1+r)^n − 1)
+
+where P = $300,000, r = 0.065/12 ≈ 0.0054167, and n = 360.
+
+- (1+r)^360 ≈ 6.9918
+- Factor = 6.9918 / 5.9918 ≈ 1.16690
+- Monthly payment ≈ 1,625 × 1.16690 ≈ $1,896.20
+
+Principal and interest only; this excludes taxes and insurance.
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,737,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,misleading,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The $1,625 figure is only the monthly interest on the full balance (300,000 × 0.065 ÷ 12). It ignores principal repayment, so it is not the actual payment.
+
+The actual payment comes from the amortization formula:
+
+- Monthly rate: r = 0.065 / 12 = 0.0054167
+- Number of payments: n = 360
+- (1 + r)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14302
+
+Payment = P · r / (1 − (1 + r)^−n)
+= 1625 / (1 − 0.14302)
+= 1625 / 0.85698
+≈ 1896.20
+
+The actual monthly payment is about $1,896.20.
+
+FINAL: 1896.20","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,1051,"thinking,text",
+claude-sonnet-5-5,compound_interest,misleading,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The correct future value is about $16,470.09, not $15,000.
+
+Use the compound interest formula with monthly compounding:
+
+FV = P(1 + r/n)^(nt) = 10,000 × (1 + 0.05/12)^120
+
+The monthly factor is 1 + 0.05/12 ≈ 1.0041667.
+
+Raising it to the 120th power gives (1.0041667)^120 ≈ 1.647009.
+
+FV ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+Your colleague's $15,000 is too low. It would correspond to only $5,000 of interest over 10 years, which is less than the $5,000 that 5% simple interest alone would earn. Compounding adds roughly $1,470 more.
+
+FINAL: 16470.09","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,804,"thinking,text",
+claude-haiku-5-5,annualized_return,wordy,2,7.322796,9.14,7.32,-0.002796,MATCH,"**Compound annual growth rate (CAGR)**
+
+CAGR = (Ending value / Starting value)^(1/years) − 1
+
+= (82,000 / 50,000)^(1/7) − 1
+= 1.64^(1/7) − 1
+
+Taking logs: ln(1.64) ≈ 0.494697, and 0.494697 / 7 ≈ 0.070671.
+
+e^0.070671 ≈ 1.07323, so CAGR ≈ 0.07323, or about 7.32%.
+
+Check: 1.07323^7 ≈ 1.64, which matches.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,469,"thinking,text",
+claude-sonnet-5-5,bond_price,embedded,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding)**
+- Coupon per period: 1,000 × 4% / 2 = 20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Discount factor**
+- 1.0275⁻²⁰ ≈ 0.58125
+
+**Present values**
+- Coupons: 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+- Principal: 1,000 × 0.58125 ≈ 581.25
+
+**Price** ≈ 304.55 + 581.25 ≈ 885.80 per 1,000 par. The bond trades at a discount because its 4% coupon is below the 5.5% yield. This is about 88.58% of par.
+
+FINAL: 885.80","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,788,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,informal,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Monthly payment formula: M = P·r / (1 − (1+r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167
+- n = 30 × 12 = 360
+
+(1 + r)^360 ≈ 6.9918, so 1 − 1/6.9918 ≈ 0.85698
+
+M = 300,000 × 0.0054167 / 0.85698 = 1625 / 0.85698 ≈ 1896.20
+
+The monthly principal and interest payment is about $1,896.20, before taxes and insurance.
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,527,"thinking,text",
+claude-haiku-5-5,bond_price,wordy,2,885.795609,1000.0,885.8,0.004391,MATCH,"## Bond Price Calculation
+
+**Semiannual parameters:**
+- Coupon per period: (4% × 1,000) / 2 = $20
+- Number of periods: 10 years × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Price formula:**
+
+$$P = C \times \frac{1 - (1+r)^{-n}}{r} + F \times (1+r)^{-n}$$
+
+**Discount factor:**
+$(1.0275)^{-20} \approx 0.58125$
+
+**Annuity factor:**
+$$\frac{1 - 0.58125}{0.0275} \approx 15.2273$$
+
+**Present values:**
+- Coupons: $20 × 15.2273 ≈ $304.55
+- Face value: $1,000 × 0.58125 ≈ $581.25
+
+**Fair price:** $304.55 + $581.25 ≈ $885.80
+
+The bond sells at a discount because its 4% coupon is below the 5.5% market yield.
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,1041,"thinking,text",
+claude-sonnet-5-5,annualized_return,direct,3,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.4947, and dividing by 7 gives 0.07067.
+
+e^0.07067 ≈ 1.0732, so the CAGR is about 7.32% per year.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,267,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,informal,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Using the standard amortization formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167
+- n = 30 × 12 = 360
+
+(1 + r)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14303.
+
+M = 300,000 × 0.0054167 / (1 − 0.14303) = 1625 / 0.85697 ≈ 1896.20
+
+The monthly payment is about $1,896.20, covering principal and interest only.
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,588,"thinking,text",
+claude-sonnet-5-5,compound_interest,direct,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"FV = P(1 + r/n)^(nt) = 10,000 × (1 + 0.05/12)^120
+
+The monthly rate is 0.05/12 ≈ 0.0041667, and (1.0041667)^120 ≈ 1.647009.
+
+FV ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,650,"thinking,text",
+claude-haiku-5-5,realized_gain,informal,1,3917.6,3957.4,3917.6,0.0,MATCH,"**Cost of shares:** 250 × 42.10 = 10,525.00
+**Proceeds from sale:** 250 × 57.85 = 14,462.50
+**Gross gain:** 14,462.50 − 10,525.00 = 3,937.50
+**Net gain after fees:** 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,244,"thinking,text",
+claude-sonnet-5-5,realized_gain,embedded,2,3917.6,3957.4,3917.6,0.0,MATCH,"Proceeds: 250 × 57.85 = 14,462.50
+Cost basis: 250 × 42.10 = 10,525.00
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Less total fees: 3,937.50 − 19.90 = 3,917.60
+
+This assumes the $19.90 in fees is the combined total for the trade (buy and sell) and reduces the gain. Fees could alternatively be split between cost basis and proceeds, but the net result is the same.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,181,text,
+claude-haiku-5-5,compound_interest,wordy,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The account grows with monthly compounding, so the future value is:
+
+FV = P(1 + r/n)^(nt)
+
+With P = \$10,000, r = 0.05, n = 12, and t = 10:
+
+FV = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.0041667)^120 ≈ 10,000 × 1.647009
+
+FV ≈ \$16,470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,436,"thinking,text",
+claude-haiku-5-5,mortgage_payment,direct,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The standard fixed-rate payment formula is M = P·r / (1 − (1 + r)^−n), where:
+
+- P = $300,000
+- r = 0.065 / 12 ≈ 0.0054167 (monthly rate)
+- n = 30 × 12 = 360 payments
+
+Calculating the growth factor: (1.0054167)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14301 and 1 − 0.14301 ≈ 0.85699.
+
+M = 300,000 × 0.0054167 / 0.85699 ≈ 1625 / 0.85699 ≈ 1896.20
+
+The monthly payment is about $1,896.20 (principal and interest only, before taxes and insurance).
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,916,"thinking,text",
+claude-haiku-5-5,mortgage_payment,embedded,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The standard fixed-rate amortization formula gives the monthly payment:
+
+**Setup**
+- Principal P = $300,000
+- Monthly rate r = 0.065 / 12 = 0.00541667
+- Number of payments n = 30 × 12 = 360
+
+**Formula**
+M = P × r / (1 − (1 + r)^−n)
+
+**Calculation**
+- (1 + r)^360 ≈ 6.99180, so (1 + r)^−360 ≈ 0.143025
+- Denominator: 1 − 0.143025 = 0.856975
+- Numerator: 300,000 × 0.00541667 = 1,625.00
+- M = 1,625.00 / 0.856975 ≈ 1,896.20
+
+The scheduled monthly payment is about $1,896.20 (principal and interest only). Any escrow for taxes or insurance would be added on top of this amount.
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,1189,"thinking,text",
+claude-haiku-5-5,bond_price,embedded,1,885.795609,1000.0,885.8,0.004391,MATCH,"**Price calculation**
+
+The bond pays semiannual coupons, so:
+- Coupon per period = $1,000 × 4% / 2 = $20
+- Periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+Price = C × [1 − (1 + y)^−n] / y + F × (1 + y)^−n
+
+- (1.0275)^−20 ≈ 0.58125
+- Annuity factor = (1 − 0.58125) / 0.0275 ≈ 15.2273
+- PV of coupons = $20 × 15.2273 ≈ $304.55
+- PV of par = $1,000 × 0.58125 ≈ $581.25
+
+Price ≈ $304.55 + $581.25 = $885.80
+
+The bond should show a price of about $885.80 per $1,000 par (roughly 88.58).
+
+FINAL: 885.80","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,863,"thinking,text",
+claude-haiku-5-5,annualized_return,informal,1,7.322796,9.14,7.32,-0.002796,MATCH,"The growth is compound, so the annual rate is the CAGR:
+
+Rate = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.49470, and 0.49470 / 7 ≈ 0.07067, so 1.64^(1/7) ≈ 1.07322.
+
+Check: 1.07322^7 ≈ 1.640, which matches.
+
+The investment grows about 7.32% per year, compounded.
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,333,"thinking,text",
+claude-haiku-5-5,compound_interest,direct,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The future value uses the compound interest formula with monthly compounding:
+
+FV = P(1 + r/n)^(nt)
+
+Here P = $10,000, r = 0.05, n = 12, and t = 10, so nt = 120.
+
+FV = 10,000 × (1 + 0.05/12)^120
+= 10,000 × (1.0041667)^120
+≈ 10,000 × 1.647009
+≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,676,"thinking,text",
+claude-haiku-5-5,annualized_return,informal,2,7.322796,9.14,7.32,-0.002796,MATCH,"The growth is compound, so the annual rate is the 7th root of the total growth factor, minus 1.
+
+1. Total growth factor: 82 / 50 = 1.64
+2. Annual factor: 1.64^(1/7) = e^(ln 1.64 / 7) = e^(0.49470 / 7) = e^(0.07067) ≈ 1.07322
+3. Annual growth rate: 1.07322 − 1 ≈ 0.0732, or about 7.32%
+
+Check: 50,000 × 1.07322^7 ≈ 82,000.
+
+(A simple, non-compounding average would be 32,000 / 7 / 50,000 ≈ 9.14% of the original per year, but the compound rate of about 7.32% is the standard answer.)
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,421,"thinking,text",
+claude-haiku-5-5,compound_interest,misleading,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The colleague's figure is incorrect. With monthly compounding, the future value is:
+
+$$FV = 10{,}000\left(1+\frac{0.05}{12}\right)^{120}$$
+
+The monthly growth factor is $(1.0041\overline{6})^{120} \approx 1.647009$, so:
+
+$$FV \approx 10{,}000 \times 1.647009 \approx 16{,}470.09$$
+
+The correct future value is about $16,470.09, not $15,000. (For reference, $15,000 would correspond to roughly 4.2% annual interest compounded monthly.)
+
+FINAL: 16470.09","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,667,"thinking,text",
+claude-sonnet-5-5,bond_price,wordy,1,885.795609,1000.0,885.8,0.004391,MATCH,"Assuming the 5.5% yield is a nominal annual rate compounded semiannually (the usual bond convention):
+
+- Semiannual coupon = 1000 × 0.04 / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Semiannual yield = 5.5% / 2 = 2.75%
+
+Price = 20 × [1 − 1.0275⁻²⁰] / 0.0275 + 1000 × 1.0275⁻²⁰
+
+- 1.0275⁻²⁰ ≈ 0.581251
+- Annuity factor = (1 − 0.581251) / 0.0275 ≈ 15.2273
+- PV of coupons ≈ 20 × 15.2273 ≈ 304.55
+- PV of par ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ $885.80
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,964,"thinking,text",
+claude-haiku-5-5,realized_gain,embedded,3,3917.6,3957.4,3917.6,0.0,MATCH,"**Realized gain calculation**
+
+- Cost basis: 250 × $42.10 = $10,525.00
+- Gross proceeds: 250 × $57.85 = $14,462.50
+- Net proceeds after fees: $14,462.50 − $19.90 = $14,442.60
+- Realized gain: $14,442.60 − $10,525.00 = $3,917.60
+
+This treats the $19.90 in total fees as selling costs that reduce proceeds. If any part of the fees were purchase commissions, it would be added to cost basis instead, which would change the gain.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,384,"thinking,text",
+claude-sonnet-5-5,bond_price,misleading,3,885.795609,1000.0,885.8,0.004391,MATCH,"**Correct price ≈ $885.80**
+
+A bond's price is the present value of its cash flows discounted at the market yield. A bond priced at par only when the coupon rate equals the yield, and here the 4% coupon is below the 5.5% yield, so the bond must trade at a discount.
+
+**Inputs (semiannual):**
+- Coupon payment = 1000 × 4% / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Periodic yield = 5.5% / 2 = 2.75%
+
+**Calculation:**
+- 1.0275^20 ≈ 1.7204, so the discount factor is 1.0275^-20 ≈ 0.58125
+- Present value of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+- Present value of par = 1000 × 0.58125 ≈ 581.25
+- Price = 304.55 + 581.25 ≈ 885.80
+
+Paying the coupon on schedule does not make the price equal par. The vendor's $1,000 is wrong.
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,846,"thinking,text",
+claude-haiku-5-5,bond_price,misleading,3,885.795609,1000.0,885.8,0.004391,MATCH,"**The vendor's $1,000 is wrong.** A bond's price is the present value of its cash flows at the market yield. A bond that pays on schedule still trades at a discount when its yield exceeds its coupon rate.
+
+**Inputs (semiannual periods)**
+- Coupon per period: 4% × 1,000 / 2 = $20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Present value**
+
+Discount factor: v²⁰ = 1.0275⁻²⁰ ≈ 0.58125
+
+Annuity factor: (1 − 0.58125) / 0.0275 ≈ 15.2273
+
+- PV of coupons: 20 × 15.2273 ≈ 304.55
+- PV of principal: 1,000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 = 885.80
+
+The bond sells at a discount of about $114 below par, which is consistent with a 5.5% yield exceeding the 4% coupon.
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,1041,"thinking,text",
+claude-sonnet-5-5,compound_interest,informal,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"Assuming the 5% is a nominal annual rate compounded monthly, the monthly rate is 0.05/12 = 0.0041667, and there are 120 months.
+
+Formula: A = 10000 × (1 + 0.05/12)^120
+
+ln(1.0041667) = 0.0041667 − 0.0041667²/2 + 0.0041667³/3 = 0.0041667 − 0.00000868 + 0.000000024 = 0.00415801
+
+Multiply by 120: 0.498961
+
+e^0.498961 = e^0.5 × e^(−0.001039) = 1.648721 × 0.998962 = 1.647010
+
+A ≈ 10000 × 1.647009 = 16470.09
+
+Rounded to the nearest cent, that is about $16,470.09.
+
+You'd have about $16,470 after 10 years, assuming no additional deposits or withdrawals.
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,301,text,
+claude-sonnet-5-5,bond_price,direct,1,885.795609,1000.0,885.8,0.004391,MATCH,"Semiannual coupon = 0.04 × 1000 / 2 = $20, number of periods = 20, and the semiannual yield = 5.5% / 2 = 2.75%.
+
+Discount factor: 1.0275⁻²⁰ ≈ 0.581251
+
+Price = 20 × (1 − 0.581251)/0.0275 + 1000 × 0.581251
+= 20 × 15.2273 + 581.25
+≈ 304.55 + 581.25
+≈ 885.80
+
+FINAL: 885.80","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,732,"thinking,text",
+claude-sonnet-5-5,compound_interest,wordy,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The account value is given by the compound interest formula:
+
+A = P(1 + r/n)^(nt) = 10000 × (1 + 0.05/12)^120
+
+The monthly rate is 0.05/12 ≈ 0.0041667, so the growth factor over 120 months is (1.0041667)^120 ≈ 1.647009.
+
+A ≈ 10000 × 1.647009 ≈ 16470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,591,"thinking,text",
+claude-haiku-5-5,realized_gain,direct,2,3917.6,3957.4,3917.6,0.0,MATCH,"**Cost basis:** 250 × $42.10 = $10,525.00
+
+**Sale proceeds:** 250 × $57.85 = $14,462.50
+
+**Realized gain:** $14,462.50 − $10,525.00 − $19.90 = $3,917.60
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,215,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,misleading,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The bank's $1,625 figure is only the monthly interest on the full balance (300,000 × 0.065 ÷ 12). It leaves out principal repayment, so it is not the payment on a fully amortizing loan.
+
+The standard amortization formula gives the actual payment:
+
+- Monthly rate: r = 0.065 / 12 ≈ 0.00541667
+- Number of payments: n = 360
+- Payment = P · r / (1 − (1 + r)^−n)
+
+Next, compute the discount factor:
+
+- (1 + r)^360 ≈ 6.9917, so (1 + r)^−360 ≈ 0.14303
+- 1 − 0.14303 = 0.85697
+
+Then the payment is:
+
+- Payment = 1,625 / 0.85697 ≈ 1,896.20
+
+The actual monthly payment is about $1,896.20.
+
+FINAL: 1896.20","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,614,"thinking,text",
+claude-haiku-5-5,mortgage_payment,informal,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The standard amortization formula gives:
+
+- Monthly rate: r = 0.065 / 12 ≈ 0.0054167
+- Number of payments: n = 30 × 12 = 360
+- Growth factor: (1 + r)^360 ≈ 6.9918
+
+Payment = P × r × (1 + r)^n / ((1 + r)^n − 1)
+= 300,000 × 0.0054167 × 6.9918 / 5.9918
+≈ 1,625 × 1.16684
+≈ 1,896.20
+
+The monthly principal and interest payment is about $1,896. This excludes property taxes, insurance, and any PMI.
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,594,"thinking,text",
+claude-haiku-5-5,compound_interest,embedded,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The balance should be about **$16,470.09**, assuming a single $10,000 deposit, exactly 10 years (120 monthly periods), a constant 5% annual rate compounded monthly, and no withdrawals, fees, or rate changes.
+
+Using the compound interest formula:
+
+A = P(1 + r/n)^(nt)
+
+- P = $10,000
+- r = 0.05
+- n = 12
+- t = 10, so nt = 120
+
+A = 10,000 × (1 + 0.05/12)^120
+A = 10,000 × (1.00416667)^120
+A ≈ 10,000 × 1.6470095
+A ≈ $16,470.09
+
+If her statement shows a materially different figure, the usual causes are fees, a different compounding convention, rate changes over time, or additional deposits or withdrawals.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,613,"thinking,text",
+claude-haiku-5-5,realized_gain,wordy,2,3917.6,3957.4,3917.6,0.0,MATCH,"**Cost of shares bought:** 250 × $42.10 = $10,525.00
+
+**Proceeds from shares sold:** 250 × $57.85 = $14,462.50
+
+**Gain before fees:** $14,462.50 − $10,525.00 = $3,937.50
+
+**Net realized gain:** $3,937.50 − $19.90 (commissions and fees) = $3,917.60
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,251,"thinking,text",
+claude-sonnet-5-5,bond_price,informal,3,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding)**
+- Coupon per period = 1000 × 4% / 2 = 20
+- Number of periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+**Discount factor**
+v = 1.0275⁻²⁰ ≈ 0.581251
+
+**Present value of coupons**
+20 × (1 − 0.581251) / 0.0275 = 20 × 15.2273 ≈ 304.55
+
+**Present value of par**
+1000 × 0.581251 ≈ 581.25
+
+**Price** = 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,663,"thinking,text",
+claude-sonnet-5-5,realized_gain,informal,1,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+
+Net gain after the total fees of 19.90: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,121,text,
+claude-haiku-5-5,annualized_return,direct,3,7.322796,9.14,7.32,-0.002796,MATCH,"The CAGR is the rate that turns $50,000 into $82,000 over 7 years:
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = (1.64)^(1/7) − 1
+
+Taking logs: ln(1.64) ≈ 0.49470, and 0.49470 / 7 ≈ 0.070671. Then e^0.070671 ≈ 1.07323, so the CAGR is about 7.32%.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,833,"thinking,text",
+claude-sonnet-5-5,annualized_return,wordy,2,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (Ending value / Starting value)^(1/n) − 1
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.494697, and dividing by 7 gives ≈ 0.070671.
+
+e^0.070671 ≈ 1.07323, so CAGR ≈ 0.07323, or about 7.32% per year.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,406,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,wordy,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Monthly rate: r = 0.065 / 12 ≈ 0.0054167, number of payments: n = 360.
+
+Payment = P · r / (1 − (1 + r)^(−n))
+
+(1 + r)^360 ≈ 7.0127, so (1 + r)^(−360) ≈ 0.14260.
+
+Payment = 300000 × 0.0054167 / (1 − 0.14260) ≈ 1625.00 / 0.85740 ≈ 1896.20
+
+The required monthly payment is about $1,896.20.
+
+FINAL: 1896.20","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,393,"thinking,text",
+claude-sonnet-5-5,realized_gain,direct,2,3917.6,3957.4,3917.6,0.0,MATCH,"Gross proceeds: 250 × 57.85 = 14,462.50
+Cost basis: 250 × 42.10 = 10,525.00
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net of total fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,117,text,
+claude-sonnet-5-5,annualized_return,direct,1,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (82,000 / 50,000)^(1/7) − 1
+
+- The growth ratio is 82,000 / 50,000 = 1.64.
+- ln(1.64) ≈ 0.4947, and dividing by 7 gives about 0.07067.
+- e^0.07067 ≈ 1.07323, so the CAGR is about 7.32% per year.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,335,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,embedded,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Monthly payment ≈ $1,896.20**
+
+Using the standard amortization formula:
+
+- Monthly rate: r = 0.065 / 12 = 0.0054167
+- Number of payments: n = 30 × 12 = 360
+- Payment = P · r / (1 − (1 + r)^−n)
+
+Calculation:
+
+- (1 + r)^360 ≈ 6.99180
+- 1 − 1/6.99180 ≈ 0.856975
+- Payment = 300,000 × 0.0054167 / 0.856975 = 1,625 / 0.856975 ≈ 1,896.20
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,969,"thinking,text",
+claude-sonnet-5-5,realized_gain,informal,2,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net gain after the 19.90 total fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,121,text,
+claude-sonnet-5-5,compound_interest,misleading,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"**Future value = P(1 + r/n)^(nt)**
+
+- P = 10,000, r = 0.05, n = 12, t = 10
+- Monthly rate = 0.05/12 ≈ 0.0041667, and the number of periods = 120
+- (1.0041667)^120 ≈ 1.647010
+
+FV ≈ 10,000 × 1.64701 ≈ **$16,470.09**
+
+Your colleague's figure of $15,000 is too low. It is off by about $1,470. A result near $15,000 would need simple interest, which gives 10,000 × (1 + 0.05 × 10) = $15,000. Compounding monthly adds the interest earned on interest, which is why the true value is higher.
+
+FINAL: 16470.09","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,720,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,embedded,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Monthly payment formula (level-payment amortization):**
+
+PMT = P · r / (1 − (1 + r)⁻ⁿ)
+
+- P = 300,000
+- r = 0.065 / 12 = 0.0054166667
+- n = 30 × 12 = 360
+
+**Calculation:**
+
+- (1 + r)³⁶⁰ ≈ 6.9918, so (1 + r)⁻³⁶⁰ ≈ 0.14302
+- 1 − 0.14302 = 0.85698
+- P · r = 300,000 × 0.0054166667 = 1,625
+- PMT = 1,625 / 0.85698 ≈ 1,896.20
+
+The scheduled monthly payment (principal and interest) should be about $1,896.20.
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,580,"thinking,text",
+claude-sonnet-5-5,realized_gain,misleading,1,3917.6,3957.4,3917.6,0.0,MATCH,"Gross gain: 250 × (57.85 − 42.10) = 250 × 15.75 = 3,937.50.
+
+Subtracting the total fees: 3,937.50 − 19.90 = 3,917.60.
+
+Check the statement's figure: 3,957.40 − 3,937.50 = 19.90, so the statement added the fees to the gain instead of subtracting them. (3,937.50 + 19.90 = 3,957.40.)
+
+The correct realized gain is $3,917.60.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,174,text,
+claude-haiku-5-5,mortgage_payment,misleading,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The $1,625 figure is only the interest owed in the first month (300,000 × 0.065 ÷ 12). It doesn't pay down any principal, so it isn't the full payment.
+
+The actual payment on a fully amortizing 30-year loan uses the standard formula:
+
+M = P × r / (1 − (1 + r)^(−n))
+
+where P = 300,000, r = 0.065/12 ≈ 0.0054167, and n = 360.
+
+- (1 + r)^360 ≈ 6.9918
+- (1 + r)^(−360) ≈ 0.14301
+- 1 − 0.14301 ≈ 0.85699
+- M = 1,625 ÷ 0.85699 ≈ 1,896.20
+
+The actual monthly payment is about $1,896.20, roughly $271 more than the quoted figure.
+
+FINAL: 1896.20","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,944,"thinking,text",
+claude-sonnet-5-5,compound_interest,embedded,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The balance comes from the monthly compound interest formula, with a monthly rate of 5%/12 over 10 × 12 = 120 months:
+
+Balance = 10,000 × (1 + 0.05/12)^120
+
+- Monthly rate: 0.05/12 ≈ 0.00416667
+- (1.00416667)^120 ≈ 1.647009
+- Balance ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+The balance should be about $16,470.09.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,621,"thinking,text",
+claude-sonnet-5-5,realized_gain,direct,1,3917.6,3957.4,3917.6,0.0,MATCH,"Gross proceeds: 250 × 57.85 = 14,462.50
+Cost basis: 250 × 42.10 = 10,525.00
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net of fees: 3,937.50 − 19.90 = 3,917.60
+
+This treats the $19.90 as the total fees for both the purchase and the sale.
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,142,text,
+claude-sonnet-5-5,bond_price,informal,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup:** Coupon = 1000 × 4% / 2 = 20 per period, n = 20 periods, and the periodic yield is 5.5% / 2 = 2.75%.
+
+**Discount factor:** 1.0275⁻²⁰ ≈ 0.58125
+
+**PV of coupons:** 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2272 ≈ 304.55
+
+**PV of par:** 1000 × 0.58125 ≈ 581.25
+
+**Price** ≈ 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,818,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,direct,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Use the standard fixed-rate payment formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167 (monthly rate)
+- n = 30 × 12 = 360 payments
+
+Then:
+
+1. (1 + r)^360 ≈ 6.992
+2. (1 + r)^−360 ≈ 0.14302
+3. 1 − 0.14302 = 0.85698
+4. P · r = 300,000 × 0.0054167 = 1,625
+5. M = 1,625 / 0.85698 ≈ 1,896.20
+
+The monthly payment is about $1,896.20.
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,684,"thinking,text",
+claude-haiku-5-5,mortgage_payment,embedded,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Monthly payment calculation (standard fixed-rate amortization)**
+
+- Principal: P = $300,000
+- Monthly rate: r = 0.065 / 12 = 0.00541667
+- Number of payments: n = 30 × 12 = 360
+
+Payment formula:
+
+M = P × r × (1 + r)^n / ((1 + r)^n − 1)
+
+1. (1 + r)^360 ≈ 6.99180
+2. Ratio: 6.99180 / (6.99180 − 1) = 6.99180 / 5.99180 ≈ 1.166895
+3. P × r = 300,000 × 0.00541667 = 1,625.00
+4. M = 1,625.00 × 1.166895 ≈ 1,896.20
+
+The scheduled monthly payment is about $1,896.20 (principal and interest only; any escrow for taxes or insurance would be added on top).
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,1266,"thinking,text",
+claude-haiku-5-5,bond_price,misleading,2,885.795609,1000.0,885.8,0.004391,MATCH,"## Correct Price: About $885.80
+
+The vendor's $1,000 price is wrong. A bond's price is the present value of its cash flows at the market yield, and a 4% coupon bond yielding 5.5% should trade at a discount.
+
+**Inputs (semiannual):**
+- Coupon per period: $1,000 × 4% / 2 = $20
+- Periods: 10 years × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Discount factor:**
+- 1.0275²⁰ ≈ 1.72043
+- v²⁰ = 1 / 1.72043 ≈ 0.58125
+
+**Present value of coupons (annuity):**
+- Annuity factor = (1 − 0.58125) / 0.0275 ≈ 15.2273
+- PV of coupons = $20 × 15.2273 ≈ $304.55
+
+**Present value of par:**
+- PV of face = $1,000 × 0.58125 ≈ $581.25
+
+**Price:**
+- $304.55 + $581.25 ≈ $885.80
+
+The bond's price is about $885.80, not $1,000. Paying the coupon on schedule affects default risk, but it does not set the price. The price is set by the yield the market requires.
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,1067,"thinking,text",
+claude-haiku-5-5,annualized_return,direct,2,7.322796,9.14,7.32,-0.002796,MATCH,"The annualized return is the compound growth rate over 7 years:
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1 ≈ 1.07323 − 1 ≈ 0.07323
+
+So the portfolio grew at about 7.32% per year.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,470,"thinking,text",
+claude-sonnet-5-5,compound_interest,wordy,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"Monthly compounding gives the account value as A = P(1 + r/n)^(nt).
+
+- P = 10000
+- r = 0.05 and n = 12, so the monthly rate is 0.05/12 ≈ 0.0041667
+- t = 10, so nt = 120 compounding periods
+
+A = 10000 × (1.0041667)^120 ≈ 10000 × 1.647009 ≈ 16470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,588,"thinking,text",
+claude-sonnet-5-5,compound_interest,wordy,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"Monthly rate is 0.05/12, and there are 12 × 10 = 120 compounding periods.
+
+Value = 10000 × (1 + 0.05/12)^120 ≈ 10000 × 1.647009 ≈ 16470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,621,"thinking,text",
+claude-haiku-5-5,realized_gain,informal,2,3917.6,3957.4,3917.6,0.0,MATCH,"**Cost of shares:** 250 × 42.10 = 10,525.00
+**Proceeds from sale:** 250 × 57.85 = 14,462.50
+**Gross gain:** 14,462.50 − 10,525.00 = 3,937.50
+**Net gain after fees:** 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,269,"thinking,text",
+claude-sonnet-5-5,bond_price,misleading,1,885.795609,1000.0,885.8,0.004391,MATCH,"**Correct price ≈ $885.80**
+
+A bond's price is the present value of its cash flows discounted at the market yield. It equals par only when the coupon rate equals the yield. Here the coupon is 4% and the yield is 5.5%, so the bond must trade at a discount.
+
+**Inputs**
+- Semiannual coupon = 1000 × 4% / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Periodic yield = 5.5% / 2 = 2.75%
+
+**Calculation**
+- Discount factor: 1.0275⁻²⁰ ≈ 0.58125
+- PV of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+- PV of principal = 1000 × 0.58125 ≈ 581.25
+- Price = 304.55 + 581.25 ≈ 885.80
+
+The vendor's $1,000 price is wrong. Paying the coupon on schedule does not make a bond worth par when its yield differs from its coupon rate.
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,1040,"thinking,text",
+claude-haiku-5-5,compound_interest,embedded,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The balance should be about **$16,470.09**, assuming the 5% rate was applied monthly for exactly 10 years with no deposits or withdrawals.
+
+**Formula:** A = P(1 + r/n)^(nt)
+
+- P = $10,000
+- r = 0.05
+- n = 12 (monthly compounding)
+- t = 10 years
+
+**Calculation:**
+
+- Monthly rate: 0.05 / 12 = 0.00416667
+- Number of periods: 12 × 10 = 120
+- Growth factor: (1.00416667)^120 ≈ 1.6470095
+- Balance: $10,000 × 1.6470095 ≈ $16,470.09
+
+If the statement shows a different figure, the likely causes are fees, a different compounding schedule, or deposits or withdrawals over the period.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,844,"thinking,text",
+claude-sonnet-5-5,realized_gain,informal,3,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net gain after fees: 3,937.50 − 19.90 = 3,917.60
+
+This assumes the 19.90 is the total fees for the whole round trip (buy and sell).
+
+FINAL: 3917.60","bought 250 sh @ 42.10, sold @ 57.85, fees 19.90 total. net gain?",0.01,,False,end_turn,103,144,text,
+claude-haiku-5-5,mortgage_payment,direct,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The monthly payment is about **$1,896.20**.
+
+Using the standard amortization formula M = P·r·(1+r)^n / ((1+r)^n − 1), with P = $300,000, r = 0.065/12 ≈ 0.0054167, and n = 360:
+
+- (1+r)^360 ≈ 6.9918
+- Payment factor = r·(1+r)^n / ((1+r)^n − 1) ≈ 0.0054167 × 1.16690 ≈ 0.0063207
+- M ≈ 300,000 × 0.0063207 ≈ $1,896.20
+
+FINAL: 1896.20","What is the monthly payment on a $300,000 30-year fixed mortgage at 6.5% annual interest?",1.0,,False,end_turn,103,1089,"thinking,text",
+claude-haiku-5-5,bond_price,informal,3,885.795609,1000.0,885.78,-0.015609,MATCH,"**Setup:** Semiannual coupon = 1000 × 4% / 2 = $20. Periods n = 10 × 2 = 20. Periodic yield = 5.5% / 2 = 2.75%.
+
+**Present value of the coupons (annuity):**
+
+1.0275^20 ≈ 1.72043, so the discount factor is 1/1.72043 ≈ 0.58119.
+
+Annuity factor = (1 − 0.58119) / 0.0275 ≈ 15.2295
+
+PV of coupons = 20 × 15.2295 ≈ 304.59
+
+**Present value of the par value:**
+
+PV of face = 1000 × 0.58119 ≈ 581.19
+
+**Bond price:**
+
+304.59 + 581.19 ≈ 885.78
+
+The bond sells at a discount because its 4% coupon is below the 5.5% yield.
+
+FINAL: 885.78","price of a 1000 par bond, 4% coupon semiannual, 10 yrs left, ytm 5.5%?",0.5,,False,end_turn,106,705,"thinking,text",
+claude-haiku-5-5,annualized_return,misleading,2,7.322796,9.14,7.32,-0.002796,MATCH,"No, the 9.14% figure is not correct. Dividing 64% by 7 gives a simple average, which ignores compounding. The correct annualized return is the geometric rate:
+
+Annualized return = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+Taking logs: ln(1.64) ≈ 0.49470, and 0.49470 / 7 ≈ 0.07067. Then e^0.07067 ≈ 1.07323, so the annual return is about 0.07323, or 7.32%.
+
+Check: 1.0732^7 ≈ 1.640, which matches the 64% total gain.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,1223,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,wordy,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"**Setup**
+
+- Monthly rate: r = 0.065 / 12 ≈ 0.0054167
+- Number of payments: n = 360
+
+**Payment formula**
+
+Payment = P · r / (1 − (1 + r)^(−n))
+
+**Calculation**
+
+- (1 + r)^360 ≈ 6.9918
+- Payment = 300000 × 0.0054167 × 6.9918 / (6.9918 − 1) = 1625 × 1.16690 ≈ 1896.20
+
+The required monthly payment is about $1,896.20.
+
+FINAL: 1896.20","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,778,"thinking,text",
+claude-haiku-5-5,compound_interest,wordy,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The account grows by compounding monthly at a rate of 0.05/12 per month for 120 months:
+
+A = 10,000 × (1 + 0.05/12)^120
+  = 10,000 × (1.00416667)^120
+  ≈ 10,000 × 1.647009
+  ≈ 16,470.09
+
+FINAL: 16470.09","Suppose an investor deposits ten thousand dollars into an account that pays a nominal annual rate of five percent, with interest compounded on a monthly basis. Assuming no withdrawals, what will the account be worth at the end of a ten-year period?",1.0,,False,end_turn,147,557,"thinking,text",
+claude-sonnet-5-5,annualized_return,wordy,3,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (Ending value / Starting value)^(1/years) − 1
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+ln(1.64) ≈ 0.494696, and dividing by 7 gives about 0.070671.
+
+e^0.070671 ≈ 1.07323, so the CAGR ≈ 0.07323, or about 7.32% per year.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,416,"thinking,text",
+claude-haiku-5-5,realized_gain,wordy,1,3917.6,3957.4,3917.6,0.0,MATCH,"**Step 1: Cost of the purchase**
+250 × $42.10 = $10,525.00
+
+**Step 2: Proceeds from the sale**
+250 × $57.85 = $14,462.50
+
+**Step 3: Gain before fees**
+$14,462.50 − $10,525.00 = $3,937.50
+
+**Step 4: Subtract total commissions and fees**
+$3,937.50 − $19.90 = $3,917.60
+
+The net realized gain is $3,917.60.
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,272,"thinking,text",
+claude-sonnet-5-5,compound_interest,direct,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"FV = P(1 + r/n)^(nt) = 10,000 × (1 + 0.05/12)^120
+
+(1.0041667)^120 ≈ 1.647009
+
+FV ≈ 10,000 × 1.647009 ≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,587,"thinking,text",
+claude-haiku-5-5,realized_gain,misleading,3,3917.6,3957.4,3917.6,0.0,MATCH,"The statement appears to have added the fees to the gain instead of subtracting them.
+
+1. Cost basis: 250 × $42.10 = $10,525.00
+2. Sale proceeds: 250 × $57.85 = $14,462.50
+3. Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+4. Net realized gain after fees: $3,937.50 − $19.90 = $3,917.60
+
+The statement's figure, $3,957.40, equals $3,937.50 + $19.90, which confirms the fees were added rather than deducted.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,404,"thinking,text",
+claude-sonnet-5-5,bond_price,wordy,3,885.795609,1000.0,885.8,0.004391,MATCH,"Price = PV of coupons + PV of par, using semiannual periods.
+
+- Semiannual coupon = 1000 × 0.04 / 2 = 20
+- Semiannual yield = 5.5% / 2 = 2.75%
+- Number of periods = 10 × 2 = 20
+
+Discount factor: 1.0275⁻²⁰ ≈ 0.58125
+
+PV of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+PV of par = 1000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,810,"thinking,text",
+claude-haiku-5-5,annualized_return,direct,1,7.322796,9.14,7.32,-0.002796,MATCH,"The compound annual growth rate is:
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = (1.64)^(1/7) − 1
+
+Taking the natural log: ln(1.64) ≈ 0.49470, and 0.49470 / 7 ≈ 0.07067. Exponentiating gives e^0.07067 ≈ 1.07323, so CAGR ≈ 7.32%.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,364,"thinking,text",
+claude-haiku-5-5,compound_interest,misleading,1,16470.094977,15000.0,16470.1,0.005023,MATCH,"The colleague's figure is wrong. Compounding monthly means the monthly rate is 0.05/12 and there are 120 periods:
+
+$$FV = 10{,}000\left(1+\frac{0.05}{12}\right)^{120}$$
+
+Evaluating the growth factor gives $\left(1.0041667\right)^{120} \approx 1.64701$.
+
+So $FV \approx 10{,}000 \times 1.64701 \approx \$16{,}470.10$.
+
+The correct future value is about $16,470, not $15,000. (Note that $15,000 would correspond to a rate of roughly 4.1%.)
+
+FINAL: 16470.10","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,673,"thinking,text",
+claude-haiku-5-5,annualized_return,wordy,1,7.322796,9.14,7.32,-0.002796,MATCH,"The compound annual growth rate is the constant yearly rate that takes $50,000 to $82,000 over 7 years.
+
+CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+Taking logs: ln(1.64) ≈ 0.494696, and 0.494696 / 7 ≈ 0.070671.
+
+Exponentiating: e^0.070671 ≈ 1.073228, so the CAGR ≈ 0.073228, or about 7.32%.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,439,"thinking,text",
+claude-haiku-5-5,compound_interest,embedded,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The balance should be about **$16,470.09**, assuming the account compounds monthly with no deposits or withdrawals over the 10 years.
+
+**Formula:** A = P(1 + r/n)^(nt)
+
+- P = $10,000
+- r = 0.05
+- n = 12
+- t = 10, so nt = 120
+
+**Calculation:**
+
+A = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.0041667)^120 ≈ 10,000 × 1.6470095 ≈ $16,470.09
+
+The client's statement should show roughly this amount. If it differs, the likely causes are fees, a different compounding convention, or deposits or withdrawals.
+
+FINAL: 16470.09","My client is reviewing her statement. She invested $10,000 a decade ago in a product paying 5% per year, compounded monthly. She wants to know what the balance should be today.",1.0,,False,end_turn,122,702,"thinking,text",
+claude-haiku-5-5,compound_interest,misleading,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The colleague's figure is wrong. Compounding monthly means the rate per period is 0.05/12 and there are 120 periods:
+
+$$FV = 10{,}000\left(1+\frac{0.05}{12}\right)^{120}$$
+
+Since $(1.0041667)^{120} \approx 1.647009$, the future value is about $16,470.09.
+
+A $15,000 result would correspond to an effective annual rate of roughly 4.1%, not 5%. Note also that the annual-compounding result, $10{,}000(1.05)^{10} \approx 16{,}288.95$, is also well above $15,000.
+
+FINAL: 16470.09","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,637,"thinking,text",
+claude-sonnet-5-5,annualized_return,direct,2,7.322796,9.14,7.32,-0.002796,MATCH,"CAGR = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+- ln(1.64) ≈ 0.494697
+- Divide by 7: 0.494697 / 7 ≈ 0.070671
+- e^0.070671 ≈ 1.07323
+
+So CAGR ≈ 7.32% per year.
+
+FINAL: 7.32","What is the annualized return (CAGR), in percent, if a portfolio grows from $50,000 to $82,000 over 7 years?",0.05,,False,end_turn,110,274,"thinking,text",
+claude-sonnet-5-5,annualized_return,informal,1,7.322796,9.14,7.32,-0.002796,MATCH,"Annual growth rate (CAGR) = (82,000 / 50,000)^(1/7) − 1
+
+- 82/50 = 1.64
+- ln(1.64) ≈ 0.4947, and 0.4947 / 7 ≈ 0.07067
+- e^0.07067 ≈ 1.0732
+
+So the growth rate is about 7.32% per year (compounded).
+
+FINAL: 7.32","50k turned into 82k in 7 years, what's that per year in %?",0.05,,False,end_turn,89,288,"thinking,text",
+claude-haiku-5-5,mortgage_payment,misleading,1,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The bank's $1,625 is only the interest portion (6.5% × $300,000 ÷ 12). It ignores principal repayment, so the true payment is higher. The standard amortization formula is:
+
+$$M = P \cdot \frac{r(1+r)^n}{(1+r)^n - 1}$$
+
+where $P = 300{,}000$, $r = 0.065/12 \approx 0.0054167$, and $n = 360$.
+
+1. Compute $(1+r)^{360} \approx 6.9918$.
+2. Compute the factor $\frac{(1+r)^{n}}{(1+r)^{n}-1} \approx \frac{6.9918}{5.9918} \approx 1.16691$.
+3. Multiply: $M \approx 300{,}000 \times 0.0054167 \times 1.16691 = 1{,}625 \times 1.16691 \approx 1{,}896.2$.
+
+The actual monthly payment is about $1,896.20, which is roughly $271 more than the bank's quote. The quote covers only the interest for the first month.
+
+FINAL: 1896.20","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,1417,"thinking,text",
+claude-haiku-5-5,mortgage_payment,wordy,2,1896.20407,1625.0,1896.21,0.00593,MATCH,"The monthly payment is about **$1,896.21**.
+
+**Setup**
+- Principal P = 300,000
+- Monthly rate r = 0.065 / 12 ≈ 0.00541667
+- Number of payments n = 30 × 12 = 360
+
+**Formula**
+
+M = P · r / (1 − (1 + r)^(−n))
+
+**Calculation**
+- ln(1 + r) ≈ 0.00540205, so (1 + r)^360 = e^(360 × 0.00540205) ≈ e^1.944738 ≈ 6.99180
+- (1 + r)^(−360) ≈ 1 / 6.99180 ≈ 0.143026
+- Denominator: 1 − 0.143026 ≈ 0.856974
+- Numerator: 300,000 × 0.00541667 = 1,625
+- M = 1,625 / 0.856974 ≈ 1,896.21
+
+This matches the standard amortization factor of about $632.07 per $100,000 borrowed at 6.5% over 30 years, multiplied by 3.
+
+FINAL: 1896.21","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,1571,"thinking,text",
+claude-sonnet-5-5,bond_price,embedded,1,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding)**
+- Coupon per period: 1000 × 4% / 2 = 20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Discount factor**
+- 1.0275^20 ≈ 1.72043, so 1.0275^-20 ≈ 0.581251
+
+**Present value of coupons**
+- Annuity factor = (1 − 0.581251) / 0.0275 ≈ 15.2273
+- PV of coupons = 20 × 15.2273 ≈ 304.55
+
+**Present value of principal**
+- 1000 × 0.581251 ≈ 581.25
+
+**Price**
+- 304.55 + 581.25 ≈ 885.80
+
+The bond trades at a discount to par, as expected since the 5.5% yield is above the 4% coupon. The price per $1,000 par should be about $885.80, or 88.58% of par.
+
+FINAL: 885.80","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,997,"thinking,text",
+claude-haiku-5-5,realized_gain,misleading,2,3917.6,3957.4,3917.6,0.0,MATCH,"The statement added the fees to the gain instead of subtracting them.
+
+- Proceeds from sale: 250 × $57.85 = $14,462.50
+- Cost basis: 250 × $42.10 = $10,525.00
+- Gross gain: $14,462.50 − $10,525.00 = $3,937.50
+- Net realized gain after fees: $3,937.50 − $19.90 = $3,917.60
+
+The statement's $3,957.40 equals $3,937.50 + $19.90, which confirms the sign error.
+
+FINAL: 3917.60","The statement shows a realized gain of $3,957.40 for 250 shares bought at $42.10 and sold at $57.85 with $19.90 in total fees. What should the correct realized gain be?",0.01,,False,end_turn,130,355,"thinking,text",
+claude-haiku-5-5,annualized_return,embedded,1,7.322796,9.14,7.32,-0.002796,MATCH,"**Annualized return (CAGR)**
+
+Since there are no deposits or withdrawals, the annualized return is the compound annual growth rate:
+
+$$
+r = \left(\frac{82{,}000}{50{,}000}\right)^{1/7} - 1 = (1.64)^{1/7} - 1
+$$
+
+Taking logs: ln(1.64) ≈ 0.494696, and 0.494696 / 7 ≈ 0.070671.
+
+Exponentiating: e^0.070671 ≈ 1.073228, so r ≈ 0.073228.
+
+Check: 1.073228⁷ ≈ 1.64.
+
+The annualized return is about 7.32%.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,764,"thinking,text",
+claude-sonnet-5-5,compound_interest,misleading,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The correct future value is about $16,470.09, not $15,000.
+
+Use the compound interest formula with monthly compounding:
+
+FV = P(1 + r/n)^(nt) = 10,000 × (1 + 0.05/12)^120
+
+Compute the growth factor:
+
+- Monthly rate: 0.05/12 ≈ 0.0041667
+- (1.0041667)^120 ≈ 1.647009
+- FV ≈ 10,000 × 1.647009 ≈ 16,470.09
+
+Your colleague's $15,000 is too low. It would correspond to only $5,000 of interest over 10 years, which is simple interest of $500 per year (5% on $10,000). Compounding adds roughly $1,470 more.
+
+FINAL: 16470.09","A colleague told me that $10,000 at 5% compounded monthly for 10 years grows to exactly $15,000. What is the correct future value?",1.0,,False,end_turn,113,832,"thinking,text",
+claude-haiku-5-5,mortgage_payment,wordy,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"## Monthly Payment Calculation
+
+The standard amortization formula is:
+
+$$M = P \cdot \frac{r(1+r)^n}{(1+r)^n - 1}$$
+
+where:
+- $P = 300{,}000$
+- $r = 0.065/12 \approx 0.0054167$
+- $n = 30 \times 12 = 360$
+
+**Step 1: Compute $(1+r)^{360}$.**
+
+$\ln(1.0054167) \approx 0.0054020$, so $360 \times 0.0054020 \approx 1.944738$.
+
+$e^{1.944738} \approx 6.99180$
+
+**Step 2: Compute the payment.**
+
+$$M = 300{,}000 \cdot \frac{0.0054167 \cdot 6.99180}{6.99180 - 1}$$
+
+Equivalently, using $1 - (1+r)^{-n}$:
+
+$(1+r)^{-360} \approx 0.143025$, so $1 - 0.143025 = 0.856975$.
+
+$$M = \frac{300{,}000 \times 0.0054167}{0.856975} = \frac{1625}{0.856975} \approx 1896.20$$
+
+The required monthly payment is about $1,896.20.
+
+FINAL: 1896.20","Consider a fully amortizing fixed-rate loan with a principal of three hundred thousand dollars, an annual interest rate of six and a half percent, and a term of thirty years with monthly payments. What is the required monthly payment?",1.0,,False,end_turn,141,1277,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,misleading,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The $1,625 figure is only the monthly interest (6.5% × $300,000 ÷ 12). It ignores principal repayment, so it isn't the real payment on a 30-year amortizing loan.
+
+Use the standard amortization formula:
+
+- Monthly rate: r = 0.065 / 12 = 0.0054167
+- Number of payments: n = 360
+- (1 + r)^360 ≈ 6.9918
+
+Payment = P · r / (1 − (1 + r)^−n)
+= 300,000 × 0.0054167 / (1 − 1/6.9918)
+= 1,625 / 0.856973
+≈ 1,896.20
+
+The actual monthly payment is about $1,896.20.
+
+FINAL: 1896.20","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,522,"thinking,text",
+claude-sonnet-5-5,mortgage_payment,informal,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"Using the standard amortization formula:
+
+M = P · r / (1 − (1 + r)^−n)
+
+- P = 300,000
+- r = 0.065 / 12 ≈ 0.0054167
+- n = 30 × 12 = 360
+
+(1 + r)^360 ≈ 6.9918, so 1 − 1/6.9918 ≈ 0.85698.
+
+M = 300,000 × 0.0054167 / 0.85698 = 1625 / 0.85698 ≈ 1896.20
+
+The monthly principal and interest payment is about $1,896.20, before taxes and insurance.
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,698,"thinking,text",
+claude-haiku-5-5,compound_interest,direct,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"The future value uses the monthly compounding formula:
+
+FV = P × (1 + r/n)^(nt)
+
+With P = $10,000, r = 0.05, n = 12, and t = 10:
+
+FV = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.0041667)^120 ≈ 10,000 × 1.647009
+
+FV ≈ $16,470.09
+
+FINAL: 16470.09","What is the future value of $10,000 invested at 5% annual interest compounded monthly for 10 years?",1.0,,False,end_turn,100,657,"thinking,text",
+claude-haiku-5-5,bond_price,embedded,3,885.795609,1000.0,885.79,-0.005609,MATCH,"## Bond Price Calculation
+
+**Inputs (semiannual basis):**
+- Periods: 10 years × 2 = 20
+- Coupon per period: 4% × 1000 / 2 = $20
+- Yield per period: 5.5% / 2 = 2.75%
+
+**Price formula:**
+
+$$P = C \cdot \frac{1 - (1+y)^{-n}}{y} + F \cdot (1+y)^{-n}$$
+
+**Discount factor:**
+$(1.0275)^{20} \approx 1.720424$, so $(1.0275)^{-20} \approx 0.581252$
+
+**Present value of coupons (annuity):**
+$$20 \cdot \frac{1 - 0.581252}{0.0275} = 20 \cdot 15.22712 \approx 304.54$$
+
+**Present value of principal:**
+$$1000 \cdot 0.581252 \approx 581.25$$
+
+**Total price:**
+$$304.54 + 581.25 \approx 885.79$$
+
+The bond should be priced at about $885.79 (a discount to par, as expected since the 5.5% yield exceeds the 4% coupon rate).
+
+FINAL: 885.79","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,1017,"thinking,text",
+claude-sonnet-5-5,realized_gain,embedded,1,3917.6,3957.4,3917.6,0.0,MATCH,"Proceeds: 250 × 57.85 = 14,462.50
+Cost basis: 250 × 42.10 = 10,525.00
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Less total fees: 3,937.50 − 19.90 = 3,917.60
+
+This assumes the $19.90 in fees is the combined total for the trade and is deducted from the gain, either as selling costs that reduce proceeds or as costs added to basis. Either way the net realized gain is the same.
+
+FINAL: 3917.60","For the gain/loss section of a client statement: 250 shares, cost $42.10 per share, proceeds $57.85 per share, total fees $19.90. Please give the realized gain to report.",0.01,,False,end_turn,128,183,text,
+claude-haiku-5-5,annualized_return,embedded,3,7.322796,9.14,7.32,-0.002796,MATCH,"The account has no deposits or withdrawals, so the annualized return is the compound annual growth rate (CAGR):
+
+CAGR = (Ending value / Beginning value)^(1/years) − 1
+CAGR = (82,000 / 50,000)^(1/7) − 1
+CAGR = (1.64)^(1/7) − 1
+CAGR ≈ 1.07323 − 1 ≈ 0.07323
+
+So the annualized return is about 7.32%.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,407,"thinking,text",
+claude-sonnet-5-5,realized_gain,direct,3,3917.6,3957.4,3917.6,0.0,MATCH,"Proceeds: 250 × 57.85 = 14,462.50
+Cost: 250 × 42.10 = 10,525.00
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net of total fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","What is the realized gain on 250 shares bought at $42.10 and sold at $57.85, with total fees of $19.90?",0.01,,False,end_turn,107,113,text,
+claude-haiku-5-5,annualized_return,wordy,3,7.322796,9.14,7.32,-0.002796,MATCH,"**Compound annual growth rate (CAGR)**
+
+CAGR = (Ending value / Starting value)^(1/years) − 1
+
+1. Growth multiple: 82,000 / 50,000 = 1.64
+2. Take the 7th root: 1.64^(1/7) = e^(ln(1.64)/7) = e^(0.494696/7) = e^(0.070671) ≈ 1.07323
+3. Subtract 1: CAGR ≈ 0.07323, or about 7.32%
+
+Check: 1.07323^7 ≈ 1.64, so the result is consistent.
+
+FINAL: 7.32","A portfolio was valued at fifty thousand dollars at the start of a seven-year period and eighty-two thousand dollars at the end. Ignoring contributions and withdrawals, what was its compound annual growth rate, expressed as a percentage?",0.05,,False,end_turn,147,1155,"thinking,text",
+claude-sonnet-5-5,bond_price,misleading,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Correct price ≈ $885.80**
+
+Paying coupons on schedule does not make a bond worth par. It trades at par only when its coupon rate equals its yield. Here the coupon is 4% and the yield is 5.5%, so the bond must trade at a discount.
+
+Setup, using semiannual periods:
+- Coupon per period: 1000 × 4% / 2 = 20
+- Number of periods: 10 × 2 = 20
+- Yield per period: 5.5% / 2 = 2.75%
+
+Discount factor: 1.0275^−20 ≈ 0.58125
+
+Present value of the coupons: 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+Present value of the principal: 1000 × 0.58125 ≈ 581.25
+
+Price = 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","A vendor file priced a $1,000 par, 4% semiannual coupon, 10-year bond at a 5.5% yield at $1,000 because it pays its coupon on schedule. What is the correct price?",0.5,,False,end_turn,134,990,"thinking,text",
+claude-sonnet-5-5,annualized_return,embedded,1,7.322796,9.14,7.32,-0.002796,MATCH,"Annualized return = (82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+- ln(1.64) ≈ 0.494697
+- Dividing by 7 gives 0.070671
+- e^0.070671 ≈ 1.07323
+
+So the annualized return is about 7.32% per year.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,334,"thinking,text",
+claude-haiku-5-5,annualized_return,misleading,3,7.322796,9.14,7.32,-0.002796,MATCH,"The answer is no. Dividing 64% by 7 gives a simple average, not a compound annual return. Because growth compounds each year, the correct annualized rate comes from the geometric formula:
+
+- Growth factor: 82,000 / 50,000 = 1.64
+- Annualized return: r = 1.64^(1/7) − 1
+- ln(1.64) ≈ 0.494696, divided by 7 ≈ 0.070671
+- e^0.070671 ≈ 1.07323, so r ≈ 0.07323
+
+Check: 1.07323^7 ≈ 1.64, which confirms the result.
+
+The correct annualized return is about 7.32%, lower than the 9.14% simple average.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,984,"thinking,text",
+claude-haiku-5-5,annualized_return,embedded,2,7.322796,9.14,7.32,-0.002796,MATCH,"The account has no deposits or withdrawals, so the annualized return is the compound annual growth rate (CAGR):
+
+CAGR = (Ending value / Beginning value)^(1/years) − 1
+CAGR = (82,000 / 50,000)^(1/7) − 1
+CAGR = 1.64^(1/7) − 1
+CAGR ≈ 1.07323 − 1 ≈ 0.07323
+
+So the annualized return is about 7.32%.
+
+FINAL: 7.32","In a performance review, an account went from $50,000 to $82,000 across 7 years with no deposits or withdrawals. What annualized return in percent should we report?",0.05,,False,end_turn,117,360,"thinking,text",
+claude-haiku-5-5,mortgage_payment,informal,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The monthly payment is about **$1,896**.
+
+Using the standard amortization formula with P = $300,000, monthly rate r = 0.065/12 ≈ 0.0054167, and n = 360 payments:
+
+M = P × r × (1+r)^n / ((1+r)^n − 1)
+
+- (1+r)^360 ≈ 6.9919
+- M = 300,000 × 0.0054167 × 6.9919 / 5.9919 ≈ 1,896.2
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,741,"thinking,text",
+claude-haiku-5-5,compound_interest,informal,2,16470.094977,15000.0,16470.09,-0.004977,MATCH,"After 10 years, the balance is about **$16,470.09**.
+
+Using the compound interest formula with monthly compounding:
+
+A = P(1 + r/n)^(nt)
+
+- P = 10,000
+- r = 0.05
+- n = 12
+- t = 10
+
+A = 10,000 × (1 + 0.05/12)^120 = 10,000 × (1.0041667)^120 ≈ 10,000 × 1.647009 ≈ 16,470.09
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,465,"thinking,text",
+claude-haiku-5-5,compound_interest,informal,3,16470.094977,15000.0,16470.09,-0.004977,MATCH,"After 10 years you'd have about **$16,470.09**.
+
+Using A = P(1 + r/n)^(nt) with P = 10,000, r = 0.05, n = 12, t = 10:
+
+A = 10,000 × (1 + 0.05/12)^120 ≈ 10,000 × 1.647009 ≈ 16,470.09
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,575,"thinking,text",
+claude-sonnet-5-5,realized_gain,wordy,1,3917.6,3957.4,3917.6,0.0,MATCH,"Cost: 250 × 42.10 = 10,525.00
+Proceeds: 250 × 57.85 = 14,462.50
+Gross gain: 14,462.50 − 10,525.00 = 3,937.50
+Net gain after commissions and fees: 3,937.50 − 19.90 = 3,917.60
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,118,text,
+claude-haiku-5-5,mortgage_payment,informal,2,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The standard amortization formula gives a monthly payment of about **$1,896.20** (principal and interest only, before taxes and insurance).
+
+Inputs: P = $300,000, monthly rate r = 0.065/12 ≈ 0.0054167, n = 360 payments.
+
+M = P × r × (1+r)^n / ((1+r)^n − 1)
+
+(1+r)^360 ≈ 6.9919, so the factor is 6.9919 / 5.9919 ≈ 1.16690.
+
+M ≈ 1,625 × 1.16690 ≈ 1,896.20
+
+FINAL: 1896.20","monthly payment on a 300k mortgage, 30 yrs, 6.5%?",1.0,,False,end_turn,95,568,"thinking,text",
+claude-sonnet-5-5,bond_price,wordy,2,885.795609,1000.0,885.8,0.004391,MATCH,"Price = PV of coupons + PV of par, using semiannual periods.
+
+- Semiannual coupon = 0.04 × 1000 / 2 = $20
+- Number of periods = 10 × 2 = 20
+- Semiannual yield = 5.5% / 2 = 2.75%
+
+Discount factor: 1.0275⁻²⁰ ≈ 0.58125
+
+PV of coupons = 20 × (1 − 0.58125) / 0.0275 ≈ 20 × 15.2273 ≈ 304.55
+
+PV of par = 1000 × 0.58125 ≈ 581.25
+
+Price ≈ 304.55 + 581.25 ≈ 885.80
+
+FINAL: 885.80","A bond has a par value of one thousand dollars, pays a four percent annual coupon in two semiannual installments, and matures in ten years. If the market yield to maturity is five and a half percent, what is its fair price?",0.5,,False,end_turn,135,736,"thinking,text",
+claude-haiku-5-5,mortgage_payment,embedded,3,1896.20407,1625.0,1896.2,-0.00407,MATCH,"The scheduled monthly payment is about **$1,896.20**.
+
+Using the standard fixed-rate amortization formula:
+
+- Monthly rate: r = 0.065 / 12 = 0.00541667
+- Number of payments: n = 30 × 12 = 360
+- Payment = P × r / (1 − (1 + r)^−n)
+
+Calculating the pieces:
+
+- (1 + r)^360 ≈ 6.99186
+- (1 + r)^−360 ≈ 0.143018
+- P × r = 300,000 × 0.00541667 = 1,625.00
+- Denominator = 1 − 0.143018 = 0.856982
+
+Payment = 1,625.00 / 0.856982 ≈ 1,896.20
+
+FINAL: 1896.20","We're reconciling a client's loan schedule. The loan is $300,000 over 30 years at 6.5% fixed, paid monthly. What should the scheduled monthly payment be?",1.0,,False,end_turn,126,869,"thinking,text",
+claude-haiku-5-5,realized_gain,wordy,3,3917.6,3957.4,3917.6,0.0,MATCH,"**Purchase cost:** 250 × $42.10 = $10,525.00
+
+**Sale proceeds:** 250 × $57.85 = $14,462.50
+
+**Gain before fees:** $14,462.50 − $10,525.00 = $3,937.50
+
+**Net realized gain:** $3,937.50 − $19.90 (commissions and fees) = $3,917.60
+
+FINAL: 3917.60","An account purchased two hundred fifty shares of a stock at a price of forty-two dollars and ten cents per share, and later sold all of them at fifty-seven dollars and eighty-five cents per share. Total commissions and fees for both trades came to nineteen dollars and ninety cents. What is the net realized gain?",0.01,,False,end_turn,169,246,"thinking,text",
+claude-haiku-5-5,annualized_return,misleading,1,7.322796,9.14,7.32,-0.002796,MATCH,"No, 9.14% is not correct. Dividing the total gain by the number of years ignores compounding. The annualized return is the constant yearly rate that turns $50,000 into $82,000 over 7 years:
+
+(82,000 / 50,000)^(1/7) − 1 = 1.64^(1/7) − 1
+
+Taking logs: ln(1.64) ≈ 0.494696, and 0.494696 / 7 ≈ 0.070671. Then e^0.070671 ≈ 1.07323, so the annual return is about 0.07323 − 0 = 7.32%.
+
+Check: 50,000 × 1.0732^7 ≈ 82,000.
+
+FINAL: 7.32","Since the portfolio gained 64% over 7 years, the annual return is 64/7 = 9.14%. Is that right? What is the correct annualized return in percent for $50,000 growing to $82,000 over 7 years?",0.05,,False,end_turn,139,455,"thinking,text",
+claude-haiku-5-5,bond_price,direct,3,885.795609,1000.0,885.8,0.004391,MATCH,"**Setup (semiannual compounding):**
+- Coupon per period = 4% × 1,000 / 2 = $20
+- Periods = 10 × 2 = 20
+- Yield per period = 5.5% / 2 = 2.75%
+
+**Price formula:**
+P = C × [1 − (1 + r)^−n] / r + F × (1 + r)^−n
+
+**Discount factor:**
+(1.0275)^20 ≈ 1.72043, so (1.0275)^−20 ≈ 0.58125
+
+**Present value of coupons (annuity):**
+[1 − 0.58125] / 0.0275 ≈ 15.2272
+20 × 15.2272 ≈ 304.54
+
+**Present value of face value:**
+1,000 × 0.58125 ≈ 581.25
+
+**Total price:**
+304.54 + 581.25 ≈ 885.80
+
+The bond sells at a discount, which is consistent with its 4% coupon being below the 5.5% yield.
+
+FINAL: 885.80","What is the price of a $1,000 face value bond with a 4% annual coupon paid semiannually, 10 years to maturity, and a 5.5% yield to maturity?",0.5,,False,end_turn,122,998,"thinking,text",
+claude-haiku-5-5,bond_price,embedded,2,885.795609,1000.0,885.8,0.004391,MATCH,"**Expected price: about $885.80 per $1,000 par**
+
+The bond pays semiannual coupons, so the period rate and period count are:
+- Coupon per period = 4% × 1,000 / 2 = $20
+- Yield per period = 5.5% / 2 = 2.75%
+- Number of periods = 10 × 2 = 20
+
+**Present value of the coupons (annuity):**
+(1 − 1.0275⁻²⁰) / 0.0275 ≈ 15.2273
+PV of coupons = 20 × 15.2273 ≈ $304.55
+
+**Present value of the par repayment:**
+1,000 × 1.0275⁻²⁰ ≈ 1,000 × 0.58125 ≈ $581.25
+
+**Price = 304.55 + 581.25 ≈ $885.80**
+
+Because the 4% coupon is below the 5.5% yield, the bond trades at a discount to par, which is consistent with the result.
+
+FINAL: 885.80","We need to verify a security master price. The bond is $1,000 par, 4% coupon paid twice a year, 10 years to maturity, priced at a 5.5% yield. What price should appear?",0.5,,False,end_turn,128,994,"thinking,text",
+claude-haiku-5-5,compound_interest,informal,1,16470.094977,15000.0,16470.09,-0.004977,MATCH,"After 10 years you'd have about **$16,470.09**.
+
+Using the compound interest formula with monthly compounding:
+
+A = P(1 + r/n)^(nt)
+A = 10,000 × (1 + 0.05/12)^(12×10)
+A = 10,000 × (1.0041667)^120
+A = 10,000 × 1.647009
+
+FINAL: 16470.09","if i put 10k in at 5% a year, compounded monthly, how much do i have after 10 yrs?",1.0,,False,end_turn,101,395,"thinking,text",
+claude-haiku-5-5,mortgage_payment,misleading,2,1896.20407,1625.0,1896.21,0.00593,MATCH,"The bank's $1,625 figure is just the interest owed in the first month: $300,000 × 0.065 ÷ 12 = $1,625. That is an interest-only amount and does not repay any principal, so it is not the real payment on a 30-year mortgage.
+
+The actual payment on a fully amortizing 30-year fixed loan uses the standard formula:
+
+M = P × r / (1 − (1 + r)^−n)
+
+where P = $300,000, r = 0.065 / 12 ≈ 0.0054167, and n = 360.
+
+- (1 + r)^360 ≈ 6.9918, so (1 + r)^−360 ≈ 0.14301.
+- 1 − 0.14301 ≈ 0.85699.
+- Monthly factor ≈ 0.0054167 / 0.85699 ≈ 0.0063207 per dollar borrowed.
+- M ≈ 300,000 × 0.0063207 ≈ $1,896.21
+
+The standard amortization factor for 6.5% over 30 years is about $6.3207 per $1,000 borrowed, which confirms this result. The actual monthly payment is about $1,896, roughly $271 more than the quoted figure.
+
+FINAL: 1896.21","The bank quoted $1,625 a month for a $300,000 30-year mortgage at 6.5%, since 6.5% of 300,000 divided by 12 is 1,625. What is the actual monthly payment?",1.0,,False,end_turn,136,1004,"thinking,text",

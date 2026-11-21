@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+.venv/
+venv/
+output/
+*.log
+
+# Local practice and newly generated output. Historical actual_run/ is included.
+sample_run/
+local_dry_run/
+test_run/
+first_live_run/
+full_live_run/

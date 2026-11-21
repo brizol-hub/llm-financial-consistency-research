@@ -6,6 +6,41 @@ I tested whether two language models could solve the same financial calculations
 
 In the first run, 131 responses contained a correct result in the required `FINAL:` format. The other 19 were classified `NO_ANSWER`, meaning the program could not extract the required final number. In the second run, after I increased the output-token allowance and collected more information about response completion, all 150 responses matched the independently calculated answers.
 
+## Research Paper
+
+**[Read the full research paper (PDF)](RESEARCH_PAPER.pdf)** | [Read online (Markdown)](RESEARCH_PAPER.md)
+
+*When a Correct AI Answer Looks Like a Failure*
+
+## Results at a Glance
+
+I tested Claude Haiku 5.5 and Claude Sonnet 5.5 across five financial calculations, five question styles, and three repetitions per model. Each experiment contained 150 API requests.
+
+| Result                                           | Experiment 1 | Experiment 2 |
+|--------------------------------------------------|-------------:|-------------:|
+| API requests                                     | 150          | 150          |
+| Correct answers in required `FINAL:` format      | 131 (87.3%)  | 150 (100%)   |
+| `NO_ANSWER` classifications                      | 19           | 0            |
+| Recorded numerical `BREAK` or `ANCHORED` results | 0            | 0            |
+| Maximum output tokens                            | 1,000        | 3,000        |
+
+## Key Finding
+
+My first experiment produced 19 `NO_ANSWER` classifications. After inspecting the saved responses, I found that six visibly contained the correct number but lacked the required `FINAL:` line. Six had no saved text, and seven remained unresolved from the available text.
+
+In the second experiment, all 150 responses matched the independently calculated answers in the required format.
+
+**The central lesson:** An evaluation can report an unsuccessful response without establishing that the model made a mathematical error. Calculation accuracy, response completion, and machine-readable formatting need to be examined separately.
+
+## Limitations
+
+This was a small exploratory study using five financial problems and two models. The second experiment increased the output-token allowance and recorded additional diagnostics, but the runs occurred at different times. Therefore, the results do not establish that the larger token allowance alone caused the improvement, nor do they demonstrate universal financial accuracy.
+
+## Suggested Citation
+
+Kobichev, Aleksandr. (2026). *When a Correct AI Answer Looks Like a Failure*. Independent research. https://github.com/brizol-hub/llm-financial-consistency-research
+
+
 ## Files and folders
 
 | Location | Contents |

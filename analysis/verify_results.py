@@ -141,7 +141,19 @@ def verify():
         hashes[name] = h
         path=ROOT/name
         assert path.exists() and digest(path)==h, f'Checksum mismatch: {name}'
-    listed = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and p != manifest and '__pycache__' not in p.parts}
+    # Ignore Git's local administrative files, which are not part of the study.
+    # Keep checking every distributed research file against the manifest.
+    def is_distributed_file(path):
+        rel = path.relative_to(ROOT)
+        if not path.is_file() or path == manifest:
+            return False
+        if any(part in {'.git', '__pycache__'} for part in rel.parts):
+            return False
+        if rel.as_posix() == '.gitattributes':
+            return False
+        return True
+
+    listed = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if is_distributed_file(p)}
     assert set(hashes)==listed, ('Manifest coverage mismatch',sorted(listed-set(hashes)),sorted(set(hashes)-listed))
     print(f'Manifest: all {len(hashes)} distributed files verified')
     return True
